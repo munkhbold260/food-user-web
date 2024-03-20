@@ -1,4 +1,5 @@
-import Header from "@/components/Header";
+import { Box } from "@mui/material";
+// import { blueGrey } from "@mui/material/colors";
 import Head from "next/head";
 
 const Home = () => {
@@ -10,7 +11,10 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Header />
+      <Box width={1440} height={2000} bgcolor={"green"} color={"red"}>
+        This is body This is body This is body This is body This is body This is
+        body
+      </Box>
     </>
   );
 };
