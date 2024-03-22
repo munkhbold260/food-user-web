@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Box } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 
 const Home = () => {
   return (
@@ -10,10 +10,12 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Box width={1440} height={2000} bgcolor={"green"} color={"red"}>
-        This is body This is body This is body This is body This is body This is
-        body
-      </Box>
+      <Stack bgcolor={"#18B951"} width="100%">
+        <Box width={1440} height={500} color={"red"}>
+          This is body This is body This is body This is body This is body This
+          is body
+        </Box>
+      </Stack>
     </>
   );
 };
