@@ -1,6 +1,5 @@
 import { Link, Stack, TextField, Typography } from "@mui/material";
-import { HeadaerLogin, HeaderLogo, HeaderSags } from "./logos/header";
-import { HeaderSearch } from "./logos/header/HeaderSearch";
+import { HeadaerLogin, HeaderLogo, HeaderSags, HeaderSearch } from ".";
 
 const Header = () => {
   return (

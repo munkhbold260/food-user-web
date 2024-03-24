@@ -1,7 +1,7 @@
 export const FooterInsta = () => {
   return (
     <svg
-      width="36"
+      width="206"
       height="36"
       viewBox="0 0 36 36"
       fill="none"

@@ -1,10 +1,7 @@
 import * as React from "react";
 
 import { Stack, Link, Typography } from "@mui/material";
-import { FooterLogo } from "./logos/footer/FooterLogo";
-import { FooterFb } from "./logos/footer/FooterFb";
-import { FooterInsta } from "./logos/footer/FooterInsta";
-import { FooterX } from "./logos/footer/FooterX";
+import { FooterFb, FooterInsta, FooterLogo, FooterX } from ".";
 
 const Footer = () => {
   return (
