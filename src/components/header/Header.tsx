@@ -31,11 +31,7 @@ const Header = () => {
               underline="none"
               sx={{ color: "black" }}
             >
-              <Typography
-                color={"black"}
-                variant="subtitle2"
-                fontFamily={"serif"}
-              >
+              <Typography color={"black"} variant="subtitle2">
                 ХООЛНЫ ЦЭС
               </Typography>
             </Link>
@@ -66,7 +62,7 @@ const Header = () => {
               alignItems={"center"}
             >
               <HeadaerLogin />
-              <Link underline="none">
+              <Link href="/login" underline="none">
                 <Typography color={"black"} fontFamily={"sf pro text"}>
                   {" "}
                   Нэвтрэх
