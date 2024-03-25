@@ -1,4 +1,3 @@
-import { Stack, Typography } from "@mui/material";
 import Head from "next/head";
 
 const Home = () => {
