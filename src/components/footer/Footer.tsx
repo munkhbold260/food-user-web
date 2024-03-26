@@ -34,7 +34,7 @@ const Footer = () => {
           <Link color={"white"} underline="none">
             <Typography color={"white"}> Үйлчилгээний нөхцөл</Typography>
           </Link>
-          <Link color={"white"} underline="none">
+          <Link href="/delivery-area" color={"white"} underline="none">
             <Typography color={"white"}> Хүргэлтийн бүс</Typography>
           </Link>
           <Link color={"white"} underline="none">

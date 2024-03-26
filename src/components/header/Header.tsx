@@ -35,7 +35,12 @@ const Header = () => {
                 ХООЛНЫ ЦЭС
               </Typography>
             </Link>
-            <Link px={"16px"} underline="none" sx={{ color: "black" }}>
+            <Link
+              href="/delivery-area"
+              px={"16px"}
+              underline="none"
+              sx={{ color: "black" }}
+            >
               <Typography color={"black"}> ХҮРГЭЛТИЙН БҮС</Typography>
             </Link>
           </Stack>

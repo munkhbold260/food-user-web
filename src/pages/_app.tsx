@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout";
-// import "@/styles/globals.css";
+import "@/styles/globals.css";
 import { CustomThemeProvider } from "@/utils/CustomTheme";
 import type { AppProps } from "next/app";
 
