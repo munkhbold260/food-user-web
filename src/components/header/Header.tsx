@@ -19,8 +19,8 @@ const Header = () => {
             <Link href="./" underline="none" sx={{ color: "black" }}>
               <Typography
                 color={"black"}
-                variant="subtitle1"
-                // fontFamily={"SF Pro Text"}
+                // variant="subtitle1"
+                fontFamily={"SF Pro Text"}
               >
                 НҮҮР
               </Typography>

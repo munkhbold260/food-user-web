@@ -1,2 +1,4 @@
-export * from "./LogIn";
-export * from "./ForgotPass";
+export * from "./Login";
+export * from "./StepOne";
+export * from "./StepTwo";
+export * from "./StepThree";

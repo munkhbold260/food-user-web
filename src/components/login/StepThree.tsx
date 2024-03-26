@@ -1,20 +1,17 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import {
+  Button,
   Container,
   FormControl,
   IconButton,
   InputAdornment,
   OutlinedInput,
   Stack,
-  TextField,
   Typography,
-  Button,
 } from "@mui/material";
-// import { v4 as uuidv4 } from "uuid";
-
 import { useState } from "react";
 
-const SignUp = () => {
+export const StepThree = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -27,49 +24,28 @@ const SignUp = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const userId = uuidv4();
-    const data = new FormData(event.currentTarget);
-    const datas = {
-      name: data.get("name"),
-      email: data.get("email"),
-      password: data.get("password"),
-      // id: userId,
+    const form = new FormData(event.currentTarget);
+    const data = {
+      password: form.get("password"),
     };
-
-    if (data.get("password") != data.get("rePassword")) {
-      alert("email different");
+    if (form.get("password") == form.get("rePassword")) {
+      console.log("data", data);
     } else {
-      console.log("datas", datas);
+      alert("password different");
     }
   };
+
   return (
     <Container>
       <Stack
-        paddingY={"110px"}
         component="form"
         onSubmit={handleSubmit}
+        paddingY={"110px"}
         margin={"auto"}
         maxWidth={"384px"}
         gap={"16px"}
       >
-        <FormControl sx={{ width: "384px" }}>
-          <Typography>Нэр </Typography>
-          <TextField
-            name="name"
-            placeholder="Нэрээ оруулна уу"
-            variant="outlined"
-            required
-          />
-        </FormControl>
-        <FormControl sx={{ width: "384px" }}>
-          <Typography>Имэйл </Typography>
-          <TextField
-            name="email"
-            placeholder="Имэйл хаягаа оруулна уу"
-            variant="outlined"
-            required
-          />
-        </FormControl>
+        <Typography variant="h5">Шинэ нууц үг зохиох </Typography>
         <FormControl sx={{ m: 0, width: "100%" }} variant="outlined">
           <Typography>Нууц үг </Typography>
           <OutlinedInput
@@ -92,7 +68,7 @@ const SignUp = () => {
           />
         </FormControl>
         <FormControl sx={{ m: 0, width: "100%" }} variant="outlined">
-          <Typography>Нууц үг давтах</Typography>
+          <Typography>Нууц үг </Typography>
           <OutlinedInput
             required
             name="rePassword"
@@ -113,11 +89,9 @@ const SignUp = () => {
           />
         </FormControl>
         <Button type="submit" variant="outlined">
-          Бүртгүүлэх
+          Үргэлжлүүлэх
         </Button>
       </Stack>
     </Container>
   );
 };
-
-export default SignUp;

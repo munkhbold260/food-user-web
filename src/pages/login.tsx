@@ -1,7 +1,7 @@
-import { Newtreh } from "@/components/login";
+import { Login } from "@/components/login";
 
 const Home = () => {
-  return <Newtreh />;
+  return <Login />;
 };
 
 export default Home;

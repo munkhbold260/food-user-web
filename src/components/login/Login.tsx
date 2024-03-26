@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-export const Newtreh = () => {
+export const Login = () => {
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -24,19 +24,30 @@ export const Newtreh = () => {
   ) => {
     event.preventDefault();
   };
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const data = {
+      email: form.get("email"),
+      password: form.get("password"),
+    };
+    console.log("data", data);
+  };
 
-  function handleLogin() {
-    console.log("pressed login button", email, password);
-  }
   return (
     <Container>
-      <Stack margin={"auto"} maxWidth={"384px"} gap={"16px"}>
+      <Stack
+        paddingY={"110px"}
+        component="form"
+        onSubmit={handleSubmit}
+        margin={"auto"}
+        maxWidth={"384px"}
+        gap={"16px"}
+      >
         <FormControl sx={{ width: "384px" }}>
           <Typography>Имэйл </Typography>
           <TextField
-            onChange={(e) => setEmail(e.target.value)}
+            required
             name="email"
             id="outlined-basic"
             placeholder="Имэйл хаягаа оруулна уу"
@@ -46,8 +57,8 @@ export const Newtreh = () => {
         <FormControl sx={{ m: 0, width: "100%" }} variant="outlined">
           <Typography>Нууц үг </Typography>
           <OutlinedInput
-            onChange={(e) => setPassword(e.target.value)}
-            fullWidth
+            required
+            name="password"
             id="outlined-adornment-password"
             type={showPassword ? "text" : "password"}
             endAdornment={
@@ -71,11 +82,11 @@ export const Newtreh = () => {
           </Typography>
         </Link>
 
-        <Button onClick={handleLogin} variant="outlined">
+        <Button type="submit" variant="outlined">
           Нэвтрэх
         </Button>
         <Typography>Эсвэл</Typography>
-        <Button href="/sign-up" onClick={handleLogin} variant="outlined">
+        <Button href="/sign-up" variant="outlined">
           Бүртгүүлэх
         </Button>
       </Stack>
