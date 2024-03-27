@@ -1,8 +1,15 @@
+import { Stack } from "@mui/material";
+
+import dummy from "@/utils/dummy.json";
+import CardFood from "./card/CardFood";
+
 const HomePage = () => {
   return (
-    <div>
-      <div>home</div>
-    </div>
+    <Stack>
+      <Stack>
+        <CardFood data={dummy} />
+      </Stack>
+    </Stack>
   );
 };
 
