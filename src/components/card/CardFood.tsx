@@ -1,4 +1,13 @@
-import { Card, CardContent, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Stack,
+  Typography,
+} from "@mui/material";
+import * as React from "react";
 
 type dataType = {
   id: number;
@@ -11,57 +20,56 @@ type dataType = {
   sale: number;
 };
 
-import * as React from "react";
-// import CardMedia from "@mui/material/CardMedia";
-
 const CardFood = ({ data }: { data: [dataType] }) => {
   const categories = ["Main Dish", "Salads", "Breakfast", "Dessert"];
 
-  const qwer = categories.map((cat) => {
-    return data
-      .filter((b) => b.category == cat)
-      .map((food) => {
-        return food.foodName;
-      });
-  });
-  console.log("qwer", food.foodName);
-
-  // const qwert = categories.map((cat) => {
-  //   return data.filter((b) => b.category == cat);
-  // });
-  // console.log("data", data);
-  // console.log("bbbbbbb", qwert);
-
-  // console.log("dataaaaa", filtered);
-  // const maindish = data.filter((b) => b.category == "Main Dish");
-  // const salads = data.filter((b) => b.category == "Salads");
-  // const breakfast = data.filter((b) => b.category == "Breakfast");
-  // const dessert = data.filter((b) => b.category == "Dessert");
-
   return (
-    <Stack>
-      {categories.map((cat) => {
-        {
-          data
-            .filter((b) => b.category == cat)
-            .map((food, id) => {
-              return <Stack key={id}>{food.foodName}</Stack>;
-            });
-        }
+    <Stack margin={"auto"} gap={"80px"} width={"1200px"} paddingTop={"50px"}>
+      {categories.map((cat, id) => {
+        return (
+          <Stack gap={"24px"} key={id}>
+            <Stack
+              height={"64px"}
+              direction={"row"}
+              justifyContent={"space-between"}
+            >
+              <Typography>{cat}</Typography>
+              <Typography>Бүгдийг харах</Typography>
+            </Stack>
+
+            <Stack direction={"row"} gap={"24px"}>
+              {data
+                .filter((food) => food.category == cat)
+                .slice(0, 4)
+                .map((e, id) => {
+                  return (
+                    <Box key={id}>
+                      <Card key={id} sx={{ width: "286px" }}>
+                        <CardActionArea>
+                          <CardMedia
+                            component="img"
+                            height="186"
+                            image={e.imagePath}
+                          />
+                          <CardContent>
+                            <Typography variant="h5" component="div">
+                              {e.foodName}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                              {e.price}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </Box>
+                  );
+                })}
+            </Stack>
+          </Stack>
+        );
       })}
     </Stack>
   );
 };
 
 export default CardFood;
-//  <Stack>
-//     {categories.map((cat, id) => {
-//       {
-//         data
-//           .filter((b) => b.category == cat)
-//           .map((food) => {
-//             return <Stack key={id}>{food.foodName}</Stack>;
-//           });
-//       }
-//     })}
-//   </Stack>

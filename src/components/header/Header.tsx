@@ -26,7 +26,7 @@ const Header = () => {
               </Typography>
             </Link>
             <Link
-              href="./blog"
+              href="./food-menu"
               px={"16px"}
               underline="none"
               sx={{ color: "black" }}
