@@ -1,13 +1,18 @@
-import {
-  Box,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardActionArea, CardContent } from "@mui/material";
+import { CardMedia, Modal, Stack, Typography } from "@mui/material";
 import * as React from "react";
+
+const style = {
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 400,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 type dataType = {
   id: number;
@@ -20,11 +25,19 @@ type dataType = {
   sale: number;
 };
 
-const CardFood = ({ data }: { data: [dataType] }) => {
+const CardFood = ({ data }: { data: dataType[] }) => {
   const categories = ["Main Dish", "Salads", "Breakfast", "Dessert"];
+  const monCat = ["Үндсэн хоол", "Салад ба зууш", "Өглөөний хоол", "Амттан"];
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   return (
     <Stack margin={"auto"} gap={"80px"} width={"1200px"} paddingTop={"50px"}>
+      {monCat.map((a) => {
+        return a;
+      })}
       {categories.map((cat, id) => {
         return (
           <Stack gap={"24px"} key={id}>
@@ -45,7 +58,7 @@ const CardFood = ({ data }: { data: [dataType] }) => {
                   return (
                     <Box key={id}>
                       <Card key={id} sx={{ width: "286px" }}>
-                        <CardActionArea>
+                        <CardActionArea onClick={handleOpen}>
                           <CardMedia
                             component="img"
                             height="186"
@@ -61,6 +74,29 @@ const CardFood = ({ data }: { data: [dataType] }) => {
                           </CardContent>
                         </CardActionArea>
                       </Card>
+                      <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={style}>
+                          <Typography
+                            id="modal-modal-title"
+                            variant="h6"
+                            component="h2"
+                          >
+                            foodName
+                          </Typography>
+                          <Typography
+                            id="modal-modal-description"
+                            sx={{ mt: 2 }}
+                          >
+                            price
+                          </Typography>
+                        </Box>
+                      </Modal>
+                      {/* <Input type="file" /> */}
                     </Box>
                   );
                 })}
@@ -68,6 +104,21 @@ const CardFood = ({ data }: { data: [dataType] }) => {
           </Stack>
         );
       })}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            foodName
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            price
+          </Typography>
+        </Box>
+      </Modal>
     </Stack>
   );
 };

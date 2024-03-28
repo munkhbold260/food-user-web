@@ -4,7 +4,7 @@
     "category": "Main Dish",
     "foodName": "Main Pizza",
     "price": 348000,
-    "imagePath": " https://s3-alpha-sig.figma.com/img/1f91/a1b6/d973c90c192043aefe86e4258acae7e6?Expires=1712534400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=P~z9YFneNa-qct5U29SL4itNNXi~7K2G-qZqMqK0vgtZXw-urwD22W2m52NnuFMQS70eaABfW40YHq5l4KV3QCM~L5eq0RYbdyKAA3XtGVHHfalMLtc80bDy6r-OMerjqDLcv7oZ6nPO8FMU-tsEMCyKNyv38KotFVZbFSBG6-efxc6LEX6yqQAeyDTfkJV~8rAH6sbx7Df8OGxOXr5ZWrvjJTdWcvoIYN8Pl9sghRZxowVw~lvztPOR8xIShyAxHpIm89Pjl1PMsG0FhqRgfyppwYynywMFb1dbFqi4YnqF4FLhjwvEATbyLV1pb2lUP5i4--zvmHU1cJLD6xv1bA__",
+    "imagePath": " http://res.cloudinary.com/ddljhjbk2/image/upload/v1711598773/xvcez8obdztuqcgv8b6d.jpg",
     "ingredients": ["Dough", "Tomato Sauce", "Cheese", "Toppings of choice"],
     "stock": 20,
     "sale": 0
