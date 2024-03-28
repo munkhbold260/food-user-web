@@ -1,6 +1,12 @@
-import { Box, Card, CardActionArea, CardContent } from "@mui/material";
-import { CardMedia, Modal, Stack, Typography } from "@mui/material";
-import * as React from "react";
+import {
+  Box,
+  CardActionArea,
+  CardMedia,
+  Modal,
+  Stack,
+  Typography,
+} from "@mui/material";
+import React from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -26,84 +32,33 @@ type dataType = {
 };
 
 const CardFood = ({ data }: { data: dataType[] }) => {
-  const categories = ["Main Dish", "Salads", "Breakfast", "Dessert"];
-  const monCat = ["Үндсэн хоол", "Салад ба зууш", "Өглөөний хоол", "Амттан"];
-
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  console.log("daaataaa", data);
   return (
-    <Stack margin={"auto"} gap={"80px"} width={"1200px"} paddingTop={"50px"}>
-      {monCat.map((a) => {
-        return a;
-      })}
-      {categories.map((cat, id) => {
-        return (
-          <Stack gap={"24px"} key={id}>
-            <Stack
-              height={"64px"}
-              direction={"row"}
-              justifyContent={"space-between"}
-            >
-              <Typography>{cat}</Typography>
-              <Typography>Бүгдийг харах</Typography>
-            </Stack>
-
-            <Stack direction={"row"} gap={"24px"}>
-              {data
-                .filter((food) => food.category == cat)
-                .slice(0, 4)
-                .map((e, id) => {
-                  return (
-                    <Box key={id}>
-                      <Card key={id} sx={{ width: "286px" }}>
-                        <CardActionArea onClick={handleOpen}>
-                          <CardMedia
-                            component="img"
-                            height="186"
-                            image={e.imagePath}
-                          />
-                          <CardContent>
-                            <Typography variant="h5" component="div">
-                              {e.foodName}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary">
-                              {e.price}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                      <Modal
-                        open={open}
-                        onClose={handleClose}
-                        aria-labelledby="modal-modal-title"
-                        aria-describedby="modal-modal-description"
-                      >
-                        <Box sx={style}>
-                          <Typography
-                            id="modal-modal-title"
-                            variant="h6"
-                            component="h2"
-                          >
-                            foodName
-                          </Typography>
-                          <Typography
-                            id="modal-modal-description"
-                            sx={{ mt: 2 }}
-                          >
-                            price
-                          </Typography>
-                        </Box>
-                      </Modal>
-                      {/* <Input type="file" /> */}
-                    </Box>
-                  );
-                })}
-            </Stack>
+    <Stack width={"256px"} height={"282px"}>
+      <CardActionArea onClick={handleOpen}>
+        <Stack position={"relative"}>
+          <CardMedia
+            sx={{ borderRadius: "16px" }}
+            component="img"
+            height="186"
+            image={data.imagePath}
+          />
+        </Stack>
+        <Stack>
+          <Typography>{data.foodName}</Typography>
+          <Stack gap={"20px"} direction="row">
+            <Typography>{data.price - data.price * 0.1}₮</Typography>
+            <Typography color={"#18B951"}>{data.price}₮</Typography>
+            <Stack>{data.sale}%</Stack>
           </Stack>
-        );
-      })}
+
+          <Typography>{data.category}</Typography>
+        </Stack>
+      </CardActionArea>
       <Modal
         open={open}
         onClose={handleClose}
@@ -111,12 +66,12 @@ const CardFood = ({ data }: { data: dataType[] }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            foodName
+          <CardMedia component={"img"} image={data.imagePath} />
+          <Typography variant="h6" component="h2">
+            {data.foodName}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            price
-          </Typography>
+          <Typography sx={{ mt: 2 }}>{data.price}"₮"</Typography>
+          <Typography sx={{ mt: 2 }}>{data.ingredients}</Typography>
         </Box>
       </Modal>
     </Stack>
