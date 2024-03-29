@@ -5,11 +5,10 @@ import { GreenStar } from "./logos/GreenStar";
 
 const HomePage = () => {
   const categories = ["Main Dish", "Salads", "Breakfast", "Dessert"];
-  const monCat = ["Үндсэн хоол", "Салад ба зууш", "Өглөөний хоол", "Амттан"];
 
   return (
-    <Stack>
-      <Stack gap={"80px"}>
+    <Stack marginTop={"60px"}>
+      <Stack gap={"30px"}>
         <Stack height={"344px"} width={"1200px"} margin={"auto"}>
           <Stack direction={"row"}>
             <GreenStar />
@@ -25,18 +24,24 @@ const HomePage = () => {
               })}
           </Stack>
         </Stack>
-        {monCat.map((a, id) => {
+        {categories.map((a, id) => {
           return (
             <Stack key={id} height={"344px"} width={"1200px"} margin={"auto"}>
               <Stack direction={"row"}>
                 <GreenStar />
                 <Typography>{a}</Typography>
               </Stack>
-              <Stack direction={"row"} gap={"24px"} height={"256px"}></Stack>
+              <Stack direction={"row"} gap={"24px"} height={"256px"}>
+                {dummy
+                  .filter((e) => e.category == a)
+                  .slice(0, 4)
+                  .map((b, id) => {
+                    return <CardFood key={id} data={b} />;
+                  })}
+              </Stack>
             </Stack>
           );
         })}
-        <CardFood data={dummy} />
       </Stack>
     </Stack>
   );
