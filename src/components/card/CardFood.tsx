@@ -33,7 +33,9 @@ const CardFood = ({ data }: { data: dataType }) => {
         <Stack>
           <Typography>{data.foodName}</Typography>
           <Stack gap={"20px"} direction="row">
-            <Typography>{data.price - data.price * 0.1}₮</Typography>
+            <Typography>
+              {data.price - (data.price / 100) * data.sale}₮
+            </Typography>
             <Typography color={"#18B951"}>{data.price}₮</Typography>
             <Stack>{data.sale}%</Stack>
           </Stack>
@@ -41,9 +43,11 @@ const CardFood = ({ data }: { data: dataType }) => {
           <Typography>{data.category}</Typography>
         </Stack>
       </CardActionArea>
-      <CardModal handleClose={handleClose} open={open} data={data} />
+      <CardModal handleClose={handleClose} opener={open} data={data} />
     </Stack>
   );
 };
 
 export default CardFood;
+
+10000 - (10000 / 100) * 25;

@@ -35,30 +35,41 @@ type dataType = {
 };
 
 const CardModal = ({
-  open,
+  opener,
   handleClose,
   data,
 }: {
-  open: boolean;
+  opener: boolean;
   handleClose: Dispatch<SetStateAction<boolean>>;
   data: dataType;
 }) => {
   const [count, setCount] = useState<number>(1);
   const handleIncrease = () => {
     setCount(count + 1);
-    console.log("handle increasee working");
   };
   const handleDecrease = () => {
     if (count > 1) {
       setCount(count - 1);
     }
+  };
 
-    console.log("handle Deccreasee working");
+  const handlePush = () => {
+    console.log(
+      "foodname",
+      data.foodName,
+      "food price",
+      data.price - (data.price / 100) * data.sale,
+      "food count",
+      count,
+      "food id",
+      data.id
+    );
+    handleClose(false);
   };
 
   return (
     <Modal
-      open={open}
+      open={opener}
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
@@ -76,7 +87,9 @@ const CardModal = ({
           <Typography variant="h6" component="h2">
             {data.foodName}
           </Typography>
-          <Typography>{data.price} ₮</Typography>
+          <Typography>
+            {data.price - (data.price / 100) * data.sale} ₮
+          </Typography>
           <Stack gap={"12px"}>
             <Typography variant="h6">Орц</Typography>
             <Stack
@@ -110,7 +123,7 @@ const CardModal = ({
               <PlusButton />
             </Button>
           </Stack>
-          <Button>Сагслах</Button>
+          <Button onClick={handlePush}>Сагслах</Button>
         </Stack>
       </Stack>
     </Modal>
