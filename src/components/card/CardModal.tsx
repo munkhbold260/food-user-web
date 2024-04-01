@@ -8,7 +8,8 @@ import {
 } from "@mui/material";
 import { SubButton } from "../logos/SubButton";
 import { PlusButton } from "../logos/PlusButton";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
+import { UseNumber } from "@/context/NumChangeContext";
 
 const style = {
   position: "absolute" as "absolute",
@@ -43,14 +44,16 @@ const CardModal = ({
   handleClose: Dispatch<SetStateAction<boolean>>;
   data: dataType;
 }) => {
-  const [count, setCount] = useState<number>(1);
+  const { foodCount, setFoodCount } = UseNumber();
+
+  // const [foodCount, setFoodCount] = useState<number>(1);
+
   const handleIncrease = () => {
-    setCount(count + 1);
+    setFoodCount(foodCount + 1);
   };
+
   const handleDecrease = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
+    setFoodCount(foodCount - 1);
   };
 
   const handlePush = () => {
@@ -60,7 +63,7 @@ const CardModal = ({
       "food price",
       data.price - (data.price / 100) * data.sale,
       "food count",
-      count,
+      foodCount,
       "food id",
       data.id
     );
@@ -118,7 +121,7 @@ const CardModal = ({
             <Button onClick={handleDecrease}>
               <SubButton />
             </Button>
-            <Typography>{count}</Typography>
+            <Typography>{foodCount}</Typography>
             <Button onClick={handleIncrease}>
               <PlusButton />
             </Button>

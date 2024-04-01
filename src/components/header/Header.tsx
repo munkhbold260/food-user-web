@@ -1,4 +1,4 @@
-import { Button, Container, Link, Stack } from "@mui/material";
+import { Container, Link, Stack } from "@mui/material";
 import { TextField, Typography, useTheme } from "@mui/material";
 import { HeadaerLogin, HeaderLogo, HeaderSags, HeaderSearch } from ".";
 
@@ -6,10 +6,13 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import BagModal from "../card/BagModal";
+import { UseNumber } from "@/context/NumChangeContext";
 
 type Anchor = "right";
 
 const Header = () => {
+  const { foodCount } = UseNumber();
+
   const theme = useTheme();
   const [state, setState] = React.useState({
     right: false,
@@ -71,6 +74,7 @@ const Header = () => {
                 <Typography onClick={toggleDrawer("right", true)}>
                   Сагс
                 </Typography>
+                <Typography>{foodCount}</Typography>
                 <Drawer
                   anchor={"right"}
                   open={state["right"]}

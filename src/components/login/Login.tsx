@@ -12,9 +12,11 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import { useState } from "react";
 
 export const Login = () => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -24,14 +26,30 @@ export const Login = () => {
   ) => {
     event.preventDefault();
   };
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
-    const data = {
+    const login = {
       email: form.get("email"),
       password: form.get("password"),
     };
-    console.log("data", data);
+    console.log("data", login);
+    const res = await fetch("http://localhost:4000/api/login", {
+      body: JSON.stringify(login),
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await res.json();
+    if (data.token) {
+      localStorage.setItem("userToken", data.token);
+      router.push("/upload");
+    } else {
+      alert("wrong email password");
+    }
   };
 
   return (
