@@ -9,6 +9,8 @@ const data = [
   { foodId: 2, foodCount: 3 },
   { foodId: 1, foodCount: 3 },
   { foodId: 4, foodCount: 3 },
+  { foodId: 4, foodCount: 3 },
+  { foodId: 4, foodCount: 3 },
 ];
 
 const BagModal = () => {

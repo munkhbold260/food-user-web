@@ -1,6 +1,7 @@
-import { Button, Container, Link, Stack } from "@mui/material";
+import { Container, Link, Stack } from "@mui/material";
 import { TextField, Typography, useTheme } from "@mui/material";
 import { HeadaerLogin, HeaderLogo, HeaderSags, HeaderSearch } from ".";
+// import { CustomContext } from "@/context/Context";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -10,6 +11,8 @@ import BagModal from "../card/BagModal";
 type Anchor = "right";
 
 const Header = () => {
+  // const { foodList, setFoodList } = React.useContext(CustomContext);
+
   const theme = useTheme();
   const [state, setState] = React.useState({
     right: false,
