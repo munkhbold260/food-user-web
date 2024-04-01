@@ -87,9 +87,19 @@ const CardModal = ({
           />
         </Box>
         <Stack width={"384px"} height={"398"} gap={"32px"}>
-          <Typography variant="h6" component="h2">
-            {data.foodName}
-          </Typography>
+          <Stack direction={"row"} justifyContent={"space-between"}>
+            <Typography variant="h6" component="h2">
+              {data.foodName}
+            </Typography>
+            <Button
+              onClick={() => {
+                handleClose(false);
+              }}
+            >
+              x
+            </Button>
+          </Stack>
+
           <Typography>
             {data.price - (data.price / 100) * data.sale} ₮
           </Typography>

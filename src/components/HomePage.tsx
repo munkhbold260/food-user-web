@@ -1,13 +1,57 @@
-import { Stack, Typography } from "@mui/material";
+import { Box, Container, Stack, Typography } from "@mui/material";
 import CardFood from "./card/CardFood";
 import dummy from "../utils/dummy.json";
 import { GreenStar } from "./logos/GreenStar";
+import Image from "next/image";
 
 const HomePage = () => {
   const categories = ["Main Dish", "Salads", "Breakfast", "Dessert"];
 
   return (
     <Stack marginTop={"60px"}>
+      <Box bgcolor={"#18BA51"} sx={{ backgroundImage: "url(/footerBg.svg)" }}>
+        <Container>
+          <Stack
+            justifyContent={"space-between"}
+            direction={"row"}
+            alignItems={"center"}
+            width={"100%"}
+            height={"788px"}
+          >
+            <Stack width={"384px"} color={"white"} gap={"23px"}>
+              <Typography fontSize={"55px"} fontWeight={600} lineHeight={"90%"}>
+                Pinecone <br /> Food delivery
+              </Typography>
+              <Box border={1} borderColor={"white"}></Box>
+              <Typography
+                fontSize={"22px"}
+                fontWeight={700}
+                lineHeight={"120%"}
+                letterSpacing={"0.22px"}
+              >
+                Horem ipsum dolor sit amet, consectetur adipiscing elit.
+              </Typography>
+            </Stack>
+            <Box position="relative" right={140}>
+              <Image
+                src="/foodIcon1.png"
+                width={443}
+                height={438}
+                alt="Picture of the food"
+                // layout="fixed"
+              />
+              <Image
+                src="/foodIcon2.png"
+                width={313}
+                height={313}
+                alt="Picture of the food"
+                // layout="fixed"
+                style={{ position: "absolute", top: 100, left: 270 }}
+              />
+            </Box>
+          </Stack>
+        </Container>
+      </Box>
       <Stack gap={"30px"}>
         <Stack height={"344px"} width={"1200px"} margin={"auto"}>
           <Stack direction={"row"}>

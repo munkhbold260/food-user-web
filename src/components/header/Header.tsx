@@ -1,6 +1,7 @@
 import { Container, Link, Stack } from "@mui/material";
 import { TextField, Typography, useTheme } from "@mui/material";
 import { HeadaerLogin, HeaderLogo, HeaderSags, HeaderSearch } from ".";
+// import { CustomContext } from "@/context/Context";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -11,7 +12,11 @@ import { UseNumber } from "@/context/NumChangeContext";
 type Anchor = "right";
 
 const Header = () => {
+<<<<<<< HEAD
   const { foodCount } = UseNumber();
+=======
+  // const { foodList, setFoodList } = React.useContext(CustomContext);
+>>>>>>> a795716e1784405d224b3edd9679db420f53f1f3
 
   const theme = useTheme();
   const [state, setState] = React.useState({
