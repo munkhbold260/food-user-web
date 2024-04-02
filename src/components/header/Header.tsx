@@ -1,7 +1,6 @@
 import { Container, Link, Stack } from "@mui/material";
 import { TextField, Typography, useTheme } from "@mui/material";
 import { HeadaerLogin, HeaderLogo, HeaderSags, HeaderSearch } from ".";
-// import { CustomContext } from "@/context/Context";
 
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -11,8 +10,10 @@ import { UseNumber } from "@/context/NumChangeContext";
 
 type Anchor = "right";
 
+type CartFood = Array<{ foodId: number }>;
+
 const Header = () => {
-  const { foodCount } = UseNumber();
+  const { cartFood } = UseNumber();
 
   const theme = useTheme();
   const [state, setState] = React.useState({
@@ -75,7 +76,7 @@ const Header = () => {
                 <Typography onClick={toggleDrawer("right", true)}>
                   Сагс
                 </Typography>
-                <Typography>{foodCount}</Typography>
+                <Typography>{cartFood.length}</Typography>
                 <Drawer
                   anchor={"right"}
                   open={state["right"]}

@@ -43,6 +43,7 @@ export const Login = () => {
         "Content-Type": "application/json",
       },
     });
+
     const data = await res.json();
     if (data.token) {
       localStorage.setItem("userToken", data.token);

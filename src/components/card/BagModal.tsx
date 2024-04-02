@@ -3,17 +3,13 @@ import dummy from "@/utils/dummy.json";
 import { useState } from "react";
 import { SubButton } from "../logos/SubButton";
 import { PlusButton } from "../logos/PlusButton";
-
-const data = [
-  { foodId: 5, foodCount: 3 },
-  { foodId: 5, foodCount: 3 },
-  { foodId: 1, foodCount: 3 },
-  { foodId: 4, foodCount: 3 },
-  { foodId: 4, foodCount: 3 },
-  { foodId: 4, foodCount: 3 },
-];
+import { UseNumber } from "@/context/NumChangeContext";
 
 const BagModal = () => {
+  const { cartFood } = UseNumber();
+
+  const data = cartFood;
+
   const [count, setCount] = useState<number>(1);
   const handleIncrease = () => {
     setCount(count + 1);

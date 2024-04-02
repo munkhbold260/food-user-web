@@ -6,9 +6,9 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { SubButton } from "../logos/SubButton";
-import { PlusButton } from "../logos/PlusButton";
-import { Dispatch, SetStateAction } from "react";
+// import { SubButton } from "../logos/SubButton";
+// import { PlusButton } from "../logos/PlusButton";
+import { Dispatch, SetStateAction, useState } from "react";
 import { UseNumber } from "@/context/NumChangeContext";
 
 const style = {
@@ -34,16 +34,6 @@ type dataType = {
   stock: number;
   sale: number;
 };
-// type dataType1 = {
-//   id: number;
-//   category: string;
-//   foodName: string;
-//   price: number;
-//   imagePath: string;
-//   ingredients: Array<string>;
-//   stock: number;
-//   sale: number;
-// };
 
 const CardModal = ({
   opener,
@@ -54,30 +44,28 @@ const CardModal = ({
   handleClose: Dispatch<SetStateAction<boolean>>;
   data: dataType;
 }) => {
-  const { foodCount, setFoodCount } = UseNumber();
+  // const { foodCount, setFoodCount } = UseNumber();
 
-  // const [foodCount, setFoodCount] = useState<number>(1);
+  // const handleIncrease = () => {
+  //   setFoodCount(foodCount + 1);
+  // };
 
-  const handleIncrease = () => {
-    setFoodCount(foodCount + 1);
-  };
-
-  const handleDecrease = () => {
-    setFoodCount(foodCount - 1);
-  };
+  // const handleDecrease = () => {
+  //   setFoodCount(foodCount - 1);
+  // };
+  // const foodCartCount: FoodCartCount = [];
 
   const handlePush = () => {
-    console.log(
-      "foodname",
-      data.foodName,
-      "food price",
-      data.price - (data.price / 100) * data.sale,
-      "food count",
-      foodCount,
-      "food id",
-      data.id
-    );
-
+    // console.log(
+    //   "foodname",
+    //   data.foodName,
+    //   "food price",
+    //   data.price - (data.price / 100) * data.sale,
+    //   "food count",
+    //   // foodCount,
+    //   // "food id",
+    //   data.id
+    // );
     handleClose(false);
   };
 
@@ -139,13 +127,13 @@ const CardModal = ({
             justifyContent={"space-between"}
             alignItems={"center"}
           >
-            <Button onClick={handleDecrease}>
+            {/* <Button onClick={handleDecrease}>
               <SubButton />
             </Button>
             <Typography>{foodCount}</Typography>
             <Button onClick={handleIncrease}>
               <PlusButton />
-            </Button>
+            </Button> */}
           </Stack>
           <Button onClick={handlePush}>Сагслах</Button>
         </Stack>

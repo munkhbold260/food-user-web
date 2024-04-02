@@ -10,11 +10,15 @@ import {
   Typography,
   Button,
 } from "@mui/material";
+import { useRouter } from "next/router";
 // import { v4 as uuidv4 } from "uuid";
 
 import { useState } from "react";
 
 const SignUp = () => {
+  const signup_url = "http://localhost:4000/api/register";
+
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -25,23 +29,37 @@ const SignUp = () => {
     event.preventDefault();
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // const userId = uuidv4();
     const data = new FormData(event.currentTarget);
-    const datas = {
+    const userData = {
       name: data.get("name"),
       email: data.get("email"),
       password: data.get("password"),
       // id: userId,
     };
+    // console.log("userData", userData);
+    const options = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    };
 
-    if (data.get("password") != data.get("rePassword")) {
-      alert("email different");
+    console.log("body====", JSON.stringify(userData));
+
+    const fetched_data = await fetch(signup_url, options);
+    const fetched_json = await fetched_data.json();
+
+    if (fetched_json == true) {
+      router.push("/upload");
+
+      console.log("1234567890", fetched_json);
     } else {
-      console.log("datas", datas);
+      alert("already email");
     }
   };
+
   return (
     <Container>
       <Stack

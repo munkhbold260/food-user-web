@@ -17,9 +17,10 @@ export const UseNumber = () => {
 // };
 
 const NumberProvider = ({ children }) => {
-  const [foodCount, setFoodCount] = useState(1);
+  const cartFoodList = [];
+  const [cartFood, setCartFood] = useState(cartFoodList);
   return (
-    <NumberContext.Provider value={{ foodCount, setFoodCount }}>
+    <NumberContext.Provider value={{ cartFood, setCartFood }}>
       {children}
     </NumberContext.Provider>
   );
