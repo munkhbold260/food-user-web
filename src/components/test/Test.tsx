@@ -28,4 +28,5 @@ const CustomContextProvider = ({ children }: customContextProvideProps) => {
     </CustomContext.Provider>
   );
 };
+
 export { CustomContextProvider };

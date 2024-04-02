@@ -12,11 +12,7 @@ import { UseNumber } from "@/context/NumChangeContext";
 type Anchor = "right";
 
 const Header = () => {
-<<<<<<< HEAD
   const { foodCount } = UseNumber();
-=======
-  // const { foodList, setFoodList } = React.useContext(CustomContext);
->>>>>>> a795716e1784405d224b3edd9679db420f53f1f3
 
   const theme = useTheme();
   const [state, setState] = React.useState({

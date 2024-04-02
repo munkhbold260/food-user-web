@@ -34,6 +34,16 @@ type dataType = {
   stock: number;
   sale: number;
 };
+// type dataType1 = {
+//   id: number;
+//   category: string;
+//   foodName: string;
+//   price: number;
+//   imagePath: string;
+//   ingredients: Array<string>;
+//   stock: number;
+//   sale: number;
+// };
 
 const CardModal = ({
   opener,
@@ -67,6 +77,7 @@ const CardModal = ({
       "food id",
       data.id
     );
+
     handleClose(false);
   };
 

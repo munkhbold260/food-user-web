@@ -47,8 +47,6 @@ export const Login = () => {
     if (data.token) {
       localStorage.setItem("userToken", data.token);
       router.push("/upload");
-    } else {
-      alert("wrong email password");
     }
   };
 
