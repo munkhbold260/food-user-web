@@ -55,8 +55,6 @@ const SignUp = () => {
       router.push("/upload");
 
       console.log("1234567890", fetched_json);
-    } else {
-      alert("already email");
     }
   };
 
