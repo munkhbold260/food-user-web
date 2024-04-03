@@ -51,10 +51,11 @@ const SignUp = () => {
     const fetched_data = await fetch(signup_url, options);
     const fetched_json = await fetched_data.json();
 
-    if (fetched_json == true) {
+    if (fetched_json.message == "Successfully user created") {
       router.push("/upload");
-
-      console.log("1234567890", fetched_json);
+      // console.log("1234567890", fetched_json);
+    } else {
+      alert("something wrong");
     }
   };
 
