@@ -52,10 +52,9 @@ const SignUp = () => {
     const fetched_json = await fetched_data.json();
 
     if (fetched_json.message == "Successfully user created") {
-      router.push("/upload");
-      // console.log("1234567890", fetched_json);
+      router.push("/login");
     } else {
-      alert("something wrong");
+      alert("alrady email");
     }
   };
 

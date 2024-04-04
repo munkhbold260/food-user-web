@@ -47,6 +47,7 @@ export const Login = () => {
     const data = await res.json();
     if (data.token) {
       localStorage.setItem("userToken", data.token);
+      console.log(data.token);
       router.push("/upload");
     } else {
       alert("wrong email or password");

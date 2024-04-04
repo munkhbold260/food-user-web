@@ -1,11 +1,39 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import CardFood from "./card/CardFood";
-import dummy from "../utils/dummy.json";
+// import dummy from "../utils/dummy.json";
 import { GreenStar } from "./logos/GreenStar";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const HomePage = () => {
+  type DataType = {
+    id: number;
+    category: string;
+    foodName: string;
+    price: number;
+    imagePath: string;
+    ingredients: string[];
+    stock: number;
+    sale: number;
+  };
+
   const categories = ["Main Dish", "Salads", "Breakfast", "Dessert"];
+  const [dummy, setDummy] = useState<DataType[] | null>(null);
+
+  console.log("dummy", dummy);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("./dummy.json");
+        const data = await response.json();
+        setDummy(data);
+        // console.log(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <Stack marginTop={"60px"}>
