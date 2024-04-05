@@ -57,7 +57,10 @@ const HomePage = () => {
                 lineHeight={"120%"}
                 letterSpacing={"0.22px"}
               >
-                Horem ipsum dolor sit amet, consectetur adipiscing elit.
+                Horem ipsum dolor sit amet, consectetur adipiscing elit. Horem
+                ipsum dolor sit amet, consectetur adipiscing elit. Horem ipsum
+                Horem ipsum dolor sit amet, consectetur adipiscing elit. dolor
+                sit amet, consectetur adipiscing elit.
               </Typography>
             </Stack>
             <Box position="relative" right={140}>
