@@ -1,40 +1,37 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import CardFood from "./card/CardFood";
-import dummy from "../utils/dummy.json";
 import { GreenStar } from "./logos/GreenStar";
 import Image from "next/image";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
+type DataType = {
+  id: number;
+  category: string;
+  foodName: string;
+  price: number;
+  imagePath: string;
+  ingredients: string[];
+  stock: number;
+  sale: number;
+};
 
 const HomePage = () => {
-  // console.log(dummy);
-  // type DataType = {
-  //   id: number;
-  //   category: string;
-  //   foodName: string;
-  //   price: number;
-  //   imagePath: string;
-  //   ingredients: [string];
-  //   stock: number;
-  //   sale: number;
-  // };
-
   const categories = ["Main Dish", "Salads", "Breakfast", "Dessert"];
-  // const [dummy, setDummy] = useState<DataType[] | null>(null);
 
-  // console.log("dummy", dummy);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await fetch("./dummy.json");
-  //       const data = await response.json();
-  //       setDummy(data);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   };
-  //   fetchData();
-  // });
-
+  const [dummy, setDummy] = useState<DataType[] | null>(null);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("./dummy.json");
+        const data = await response.json();
+        setDummy(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log("dummy", dummy);
   return (
     <Stack marginTop={"60px"}>
       <Box bgcolor={"#18BA51"} sx={{ backgroundImage: "url(/footerBg.svg)" }}>
@@ -91,7 +88,7 @@ const HomePage = () => {
           </Stack>
           <Stack direction={"row"} gap={"24px"} height={"256px"}>
             {dummy
-              .filter((saled) => saled.sale > 0)
+              ?.filter((saled) => saled.sale > 0)
               .sort((a, b) => b.sale - a.sale)
               .slice(0, 4)
               .map((a, id) => {
@@ -108,7 +105,7 @@ const HomePage = () => {
               </Stack>
               <Stack direction={"row"} gap={"24px"} height={"256px"}>
                 {dummy
-                  .filter((e) => e.category == a)
+                  ?.filter((e) => e.category == a)
                   .slice(0, 4)
                   .map((b, id) => {
                     return <CardFood key={id} data={b} />;
