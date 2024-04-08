@@ -101,7 +101,6 @@ export const Login = () => {
             Нууц үг сэргээх
           </Typography>
         </Link>
-
         <Button type="submit" variant="outlined">
           Нэвтрэх
         </Button>
