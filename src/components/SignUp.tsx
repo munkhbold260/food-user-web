@@ -11,7 +11,6 @@ import {
   Button,
 } from "@mui/material";
 import { useRouter } from "next/router";
-// import { v4 as uuidv4 } from "uuid";
 
 import { useState } from "react";
 
@@ -31,13 +30,11 @@ const SignUp = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // const userId = uuidv4();
     const data = new FormData(event.currentTarget);
     const userData = {
       name: data.get("name"),
       email: data.get("email"),
       password: data.get("password"),
-      // id: userId,
     };
     // console.log("userData", userData);
     const options = {
