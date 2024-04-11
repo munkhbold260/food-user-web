@@ -6,15 +6,43 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 
-export const StepTwo = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+export const StepTwo = ({
+  setProgress,
+  email,
+}: {
+  setProgress: Dispatch<SetStateAction<number>>;
+  email: string;
+}) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("email", email);
     const form = new FormData(event.currentTarget);
-    const data = {
-      code: form.get("code"),
+    const login = {
+      email: email,
+      password: form.get("code"),
     };
-    console.log(data);
+    console.log("step two login", login);
+
+    const res = await fetch("http://localhost:4000/api/login", {
+      body: JSON.stringify(login),
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application.json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await res.json();
+    if (data.token) {
+      // localStorage.setItem("userToken", data.token);
+      // console.log(data.token);
+      setProgress(3);
+    } else {
+      alert("wrong email or password");
+    }
   };
 
   return (

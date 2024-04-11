@@ -33,7 +33,7 @@ export const Login = () => {
       email: form.get("email"),
       password: form.get("password"),
     };
-    console.log("data", login);
+    // console.log("data", login);
     const res = await fetch("http://localhost:4000/api/login", {
       body: JSON.stringify(login),
       method: "POST",
@@ -48,7 +48,7 @@ export const Login = () => {
     if (data.token) {
       localStorage.setItem("userToken", data.token);
       console.log(data.token);
-      router.push("/upload");
+      router.push("/");
     } else {
       alert("wrong email or password");
     }

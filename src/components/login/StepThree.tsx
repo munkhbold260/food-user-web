@@ -9,9 +9,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useRouter } from "next/router";
 import { useState } from "react";
+const cat_url = "http://localhost:4000/api/password-reset";
 
-export const StepThree = () => {
+export const StepThree = ({ email }: { email: string }) => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -22,17 +25,30 @@ export const StepThree = () => {
     event.preventDefault();
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const form = new FormData(event.currentTarget);
-    const data = {
-      password: form.get("password"),
+    const data = { email: email, password: form.get("password") };
+    console.log("stepthree data", data);
+    const options = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
     };
-    if (form.get("password") == form.get("rePassword")) {
-      console.log("data", data);
+    router.push("/login");
+
+    const fetched_data = await fetch(cat_url, options);
+    const fetched_json = await fetched_data.json();
+
+    console.log(fetched_json.message);
+
+    if (fetched_json.message == "Successfully user created") {
+      console.log("category added");
     } else {
-      alert("password different");
+      alert("already email");
     }
+    location.reload();
   };
 
   return (

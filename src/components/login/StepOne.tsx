@@ -6,15 +6,18 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-
+import { Dispatch, SetStateAction } from "react";
 export const StepOne = ({
   setProgress,
+  setEmail,
 }: {
-  setProgress: (value: number) => void;
+  setProgress: Dispatch<SetStateAction<number>>;
+  setEmail: Dispatch<SetStateAction<string>>;
 }) => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
+    const mail = form.get("email");
     const data = { email: form.get("email") };
     try {
       const response = await fetch("http://localhost:4000/api/reset-pass", {
@@ -32,7 +35,9 @@ export const StepOne = ({
         throw new Error(`response status: ${response.status}`);
       }
       const responseData = await response.json();
-      if (responseData) setProgress(1);
+      if (responseData) {
+        setProgress(2), setEmail(mail);
+      }
     } catch (err) {
       console.error(err);
       alert("Zuw emailee oruulna uu ");
