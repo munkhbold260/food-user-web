@@ -7,7 +7,11 @@ import {
   Typography,
 } from "@mui/material";
 
-export const StepOne = () => {
+export const StepOne = ({
+  setProgress,
+}: {
+  setProgress: (value: number) => void;
+}) => {
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -25,16 +29,13 @@ export const StepOne = () => {
       });
 
       if (!response.ok) {
-        console.log("falling over");
         throw new Error(`response status: ${response.status}`);
       }
       const responseData = await response.json();
-      console.log(responseData["message"]);
-
-      alert("Message successfully sent");
+      if (responseData) setProgress(1);
     } catch (err) {
       console.error(err);
-      alert("Error, please try resubmitting the form");
+      alert("Zuw emailee oruulna uu ");
     }
   }
 

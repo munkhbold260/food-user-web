@@ -14,7 +14,7 @@ export const StepTwo = () => {
     const data = {
       code: form.get("code"),
     };
-    console.log("code", data);
+    console.log(data);
   };
 
   return (
