@@ -12,7 +12,7 @@ export const ForgotPass = () => {
         <StepOne setProgress={setProgress} setEmail={setEmail} />
       )}
       {progress == 2 && <StepTwo setProgress={setProgress} email={email} />}
-      {progress == 3 && <StepThree setProgress={setProgress} email={email} />}
+      {progress == 3 && <StepThree email={email} />}
     </Stack>
   );
 };

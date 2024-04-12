@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 export const StepOne = ({
   setProgress,
   setEmail,
@@ -14,15 +14,16 @@ export const StepOne = ({
   setProgress: Dispatch<SetStateAction<number>>;
   setEmail: Dispatch<SetStateAction<string>>;
 }) => {
+  const [email, setEmail1] = useState<string>("");
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const mail = form.get("email");
-    const data = { email: form.get("email") };
+    // const form = new FormData(event.currentTarget);
+    // const mail = form.get("email");
+    // const data = { email: form.get("email") };
     try {
       const response = await fetch("http://localhost:4000/api/reset-pass", {
         method: "POST",
-        body: JSON.stringify(data),
+        body: JSON.stringify(email),
         mode: "cors",
 
         headers: {
@@ -36,7 +37,7 @@ export const StepOne = ({
       }
       const responseData = await response.json();
       if (responseData) {
-        setProgress(2), setEmail(mail);
+        setProgress(2), setEmail(email);
       }
     } catch (err) {
       console.error(err);
@@ -58,6 +59,9 @@ export const StepOne = ({
         <FormControl sx={{ width: "384px" }}>
           <Typography>Имэйл </Typography>
           <TextField
+            onChange={(e) => {
+              setEmail1(e.target.value);
+            }}
             name="email"
             id="outlined-basic"
             placeholder="Имэйл хаягаа оруулна уу"

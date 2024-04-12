@@ -29,9 +29,9 @@ const BagModal = () => {
         {data.length}
       </Typography>
       <Stack gap="15px">
-        {data.map((a, id) => {
+        {data.map(({ a, index }: { a: any; index: number }) => {
           return (
-            <Stack key={id} height={"230px"} bgcolor={"yellow"}>
+            <Stack key={index} height={"230px"} bgcolor={"yellow"}>
               {dummy
                 .filter((b) => b.id == a.foodId)
                 .map((c, id) => {

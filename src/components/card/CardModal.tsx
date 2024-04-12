@@ -8,8 +8,9 @@ import {
 } from "@mui/material";
 // import { SubButton } from "../logos/SubButton";
 // import { PlusButton } from "../logos/PlusButton";
-import { Dispatch, SetStateAction, useState } from "react";
-import { UseNumber } from "@/context/NumChangeContext";
+import { Dispatch, SetStateAction } from "react";
+// import { SubButton } from "../logos/SubButton";
+// import { PlusButton } from "../logos/PlusButton";
 
 const style = {
   position: "absolute" as "absolute",
